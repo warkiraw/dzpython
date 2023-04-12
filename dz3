@@ -1,0 +1,32 @@
+from queue import Queue
+
+def bfs(graph, start):
+    visited = set()
+    queue = Queue()
+    queue.put(start)
+
+    while not queue.empty():
+        vertex = queue.get()
+
+        if vertex not in visited:
+            visited.add(vertex)
+            print(vertex)
+
+            for neighbor in graph[vertex]:
+                if neighbor not in visited:
+                    queue.put(neighbor)
+graph = {
+    'A': ['B', 'C'],
+    'B': ['D'],
+    'C': ['E'],
+    'D': [],
+    'E': []
+}
+
+bfs(graph, 'A')
+output:
+A
+B
+C
+D
+E
